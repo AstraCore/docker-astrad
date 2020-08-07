@@ -1,0 +1,15 @@
+# Copy to /etc/init/docker-astrad.conf
+description "Docker container for astrad p2p node"
+start on filesystem and started docker
+stop on runlevel [!2345]
+respawn
+pre-start script
+  # Clean-up if left behind
+  docker rm -f astrad-node || true
+  
+  # Attempt to always update and fail silently if the network isn't ready
+  docker pull Astra_Linux/astrad || true
+end script
+script
+  exec docker run --rm -v astrad-data:/AsrtaCore --name=astrad-node --rm -p 5878:5878 -p 127.0.0.1:6940:6940 Astra_Linux/astrad
+end script
