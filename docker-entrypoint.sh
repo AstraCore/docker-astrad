@@ -9,8 +9,8 @@ fi
 
 # allow the container to be started with `--user`
 if [ "$1" = 'astra_oneshot' -a "$(id -u)" = '0' ]; then
-	chown -R AsrtaCore .
-	exec gosu AsrtaCore "$0" "$@"
+	chown -R AstraCore .
+	exec gosu AstraCore "$0" "$@"
 fi
 
 exec "$@"
