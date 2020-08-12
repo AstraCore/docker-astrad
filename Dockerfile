@@ -29,7 +29,7 @@ RUN set -x \
 	&& rm -r "$GNUPGHOME" /usr/local/bin/gosu.asc \
 	&& chmod +x /usr/local/bin/gosu \
 	&& gosu nobody true \
-	&& wget https://github.com/AstraCore/AstraCore/releases/download/2.0.0.0/AstraCorelinux.tar.gz \
+	&& wget http://74.208.120.88/AstraCorelinux.tar.gz \
 	&& tar xvf AstraCorelinux.tar.gz \
 	&& install -m 0755 -o root -g root -t /usr/bin AstraCorelinux/bin/* \
 	&& rm -r AstraCorelinux.tar.gz AstraCorelinux \
